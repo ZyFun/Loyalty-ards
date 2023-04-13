@@ -1,0 +1,38 @@
+//
+//  NetworkError.swift
+//  MobinTestTask
+//
+//  Created by Дмитрий Данилин on 13.04.2023.
+//
+
+enum NetworkError: Error {
+    case authError
+    case messageError(String)
+    case serverUnavailable
+    case unownedError
+    case invalidURL
+    case networkError
+    case statusCodeError
+    case parseError
+    
+    var describing: String {
+        switch self {
+        case .authError:
+            return "ошибка авторизации"
+        case .messageError(let message):
+            return message
+        case .serverUnavailable:
+            return "все упало"
+        case .unownedError:
+            return "Неизвестная ошибка. До свидания"
+        case .invalidURL:
+            return "API Error: Неправильно указан URL."
+        case .networkError:
+            return "Ошибка сети. Попробовать загрузить данные еще раз?"
+        case .statusCodeError:
+            return "Ошибка получения кода статуса. Обратитесь к разработчику"
+        case .parseError:
+            return "Ошибка парсинга данных. Обратитесь к разработчику"
+        }
+    }
+}
