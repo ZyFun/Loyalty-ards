@@ -9,8 +9,8 @@ import Foundation
 
 struct RequestFactory {    
     struct CompanyRequest {
-        static func modelConfig(urlRequest: URLRequest) -> RequestConfig<CompanyParser> {
-            let request = CompanyUrlRequest(urlRequest: urlRequest)
+        static func modelConfig(offset: Int) -> RequestConfig<CompanyParser> {
+            let request = CompanyUrlRequest(offset: offset)
             let parser = CompanyParser()
             return RequestConfig<CompanyParser>(request: request, parser: parser)
         }

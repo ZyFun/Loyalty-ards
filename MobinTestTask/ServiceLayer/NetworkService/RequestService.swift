@@ -38,13 +38,7 @@ final class RequestSender: IRequestSender {
             return
         }
         
-        // Не использовать в проде
-        let delegate = InvalidCertURLSessionDelegate()
-        let sessionConfig = URLSessionConfiguration.default
-        sessionConfig.urlCache = nil
-        sessionConfig.timeoutIntervalForRequest = 40.0
-        
-        let session = URLSession(configuration: sessionConfig, delegate: delegate, delegateQueue: nil)
+        let session = URLSession.shared
         let task = session.dataTask(with: urlRequest) { data, response, error in
             if let error = error {
                 SystemLogger.error(error.localizedDescription)
@@ -75,7 +69,7 @@ final class RequestSender: IRequestSender {
             
             #warning("Удалить перед отправкой")
             if let data = data, let jsonString = String(data: data, encoding: .utf8) {
-                print("Response JSON: \(jsonString)")
+                SystemLogger.info("Response JSON: \(jsonString)")
             }
             
             if let data = data,

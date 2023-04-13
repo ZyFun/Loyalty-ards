@@ -21,11 +21,30 @@ final class CompanyParser: IParser {
     }
 }
 
-// TODO: Все настройки вынести сюда. Как изменяемый параметр принимать только offset
 struct CompanyUrlRequest: IRequest {
     var urlRequest: URLRequest?
+    var requestInfo = CompanyRequestModel()
     
-    init(urlRequest: URLRequest) {
-        self.urlRequest = urlRequest
+    init(offset: Int) {
+        requestInfo.updateOffset(offset)
+        self.urlRequest = request()
+    }
+    
+    mutating func request() -> URLRequest? {
+        guard let url = URL(string: requestInfo.url) else {
+            SystemLogger.error("Неправильный URL")
+            return nil
+        }
+        
+        var urlRequest = URLRequest(url: url, timeoutInterval: 30)
+        urlRequest.httpMethod = requestInfo.method
+        
+        let header = requestInfo.header
+        urlRequest.addValue(header.value, forHTTPHeaderField: header.key)
+    
+        let requestBodyRaw = requestInfo.body
+        urlRequest.httpBody = requestBodyRaw.data(using: .utf8)
+        
+        return urlRequest
     }
 }
