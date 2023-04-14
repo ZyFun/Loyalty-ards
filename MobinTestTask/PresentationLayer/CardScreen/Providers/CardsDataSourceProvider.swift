@@ -50,7 +50,13 @@ extension CardsDataSourceProvider {
                     return UITableViewCell()
                 }
                 
-                cell.config()
+                cell.config(
+                    companyName: model.name,
+                    mark: model.mark,
+                    percent: model.percent,
+                    loyaltyName: model.loyaltyName,
+                    hexColors: model.hexColors
+                )
                 
                 return cell
             }

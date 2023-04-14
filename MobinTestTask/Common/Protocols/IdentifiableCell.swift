@@ -5,9 +5,7 @@
 //  Created by Дмитрий Данилин on 14.04.2023.
 //
 
-protocol IdentifiableCell {
-    
-}
+protocol IdentifiableCell {}
 
 extension IdentifiableCell {
     static var identifier: String {

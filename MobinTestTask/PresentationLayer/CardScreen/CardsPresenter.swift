@@ -33,7 +33,24 @@ final class CardsPresenter {
     
     private func parseServerDataToViewModel() {
         companyAPIModel.forEach { companyData in
-            let model = CardModel(id: companyData.company.companyId)
+            let colorsModel = CardColorsModel(
+                cardBackgroundColor: companyData.mobileAppDashboard.cardBackgroundColor,
+                highlightTextColor: companyData.mobileAppDashboard.highlightTextColor,
+                textColor: companyData.mobileAppDashboard.textColor,
+                mainColor: companyData.mobileAppDashboard.mainColor,
+                accentColor: companyData.mobileAppDashboard.accentColor,
+                backgroundColor: companyData.mobileAppDashboard.backgroundColor
+            )
+            
+            let model = CardModel(
+                id: companyData.company.companyId,
+                name: companyData.mobileAppDashboard.companyName,
+                imageUrl: companyData.mobileAppDashboard.logo,
+                mark: String(companyData.customerMarkParameters.mark),
+                loyaltyName: companyData.customerMarkParameters.loyaltyLevel.name,
+                percent: String(companyData.customerMarkParameters.loyaltyLevel.cashToMark),
+                hexColors: colorsModel
+            )
             viewModels.append(model)
         }
     }

@@ -19,25 +19,25 @@ final class CardsViewController: UIViewController {
     
     // MARK: - Private properties
     
+    @UsesAutoLayout
     private var containerView: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = Colors.white
         return view
     }()
     
-    private var cardManagementButton: UILabel = {
+    @UsesAutoLayout
+    private var cardManagementLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = Colors.blue
         label.text = "Управление картами"
-        label.font = Fonts.systemNormal.font
+        label.font = Fonts.systemNormal(.size1).font
         return label
     }()
     
+    @UsesAutoLayout
     private var cardsTableView: UITableView = {
         let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = Colors.lightGrey
         return tableView
     }()
@@ -87,12 +87,12 @@ private extension CardsViewController {
     func setupConstraints() {
         view.addSubview(containerView)
         view.addSubview(cardsTableView)
-        containerView.addSubview(cardManagementButton)
+        containerView.addSubview(cardManagementLabel)
         
         NSLayoutConstraint.activate([
-            cardManagementButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            cardManagementButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: Indents.redHeight),
-            cardManagementButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -Indents.redHeight),
+            cardManagementLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            cardManagementLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: Indents.red),
+            cardManagementLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -Indents.red),
             
             containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             containerView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),

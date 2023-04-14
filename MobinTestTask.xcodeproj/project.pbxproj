@@ -30,6 +30,7 @@
 		2C86FC3629E9673600D21D76 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C86FC3529E9673600D21D76 /* CardCell.swift */; };
 		2C86FC3B29E9708C00D21D76 /* Indents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C86FC3A29E9708C00D21D76 /* Indents.swift */; };
 		2C86FC3D29E9837C00D21D76 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C86FC3C29E9837C00D21D76 /* Fonts.swift */; };
+		2C86FC4529E9D4DB00D21D76 /* UsesAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C86FC4429E9D4DB00D21D76 /* UsesAutoLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		2C86FC3529E9673600D21D76 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		2C86FC3A29E9708C00D21D76 /* Indents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indents.swift; sourceTree = "<group>"; };
 		2C86FC3C29E9837C00D21D76 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		2C86FC4429E9D4DB00D21D76 /* UsesAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsesAutoLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				2C86FC3029E9655D00D21D76 /* Constants */,
+				2C86FC4629E9D54B00D21D76 /* PropertyWrappers */,
 				2C3CBE9529E8199F004CF4A6 /* Supports */,
 				2C86FC1729E95E0E00D21D76 /* Protocols */,
 				2C86FC2A29E9647200D21D76 /* Extensions */,
@@ -228,6 +231,14 @@
 				2C86FC3C29E9837C00D21D76 /* Fonts.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		2C86FC4629E9D54B00D21D76 /* PropertyWrappers */ = {
+			isa = PBXGroup;
+			children = (
+				2C86FC4429E9D4DB00D21D76 /* UsesAutoLayout.swift */,
+			);
+			path = PropertyWrappers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +331,7 @@
 				2C86FC2929E9612600D21D76 /* PresentationAssembly.swift in Sources */,
 				2C3CBE7D29E7C569004CF4A6 /* AppDelegate.swift in Sources */,
 				2C3CBE9C29E81A69004CF4A6 /* NetworkError.swift in Sources */,
+				2C86FC4529E9D4DB00D21D76 /* UsesAutoLayout.swift in Sources */,
 				2C86FC3B29E9708C00D21D76 /* Indents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

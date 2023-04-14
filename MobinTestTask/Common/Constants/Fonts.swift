@@ -8,27 +8,29 @@
 import UIKit
 
 enum Fonts {
-    case systemNormal
-    case systemBold
+    case systemNormal(_ size: FontSize)
+    case systemBold(_ size: FontSize)
     
     var font: UIFont {
         switch self {
-        case .systemNormal:
-            return UIFont.systemFont(ofSize: FontSize.header1.size)
-        case .systemBold:
-            return UIFont.boldSystemFont(ofSize: FontSize.header1.size)
+        case .systemNormal(let size):
+            return UIFont.systemFont(ofSize: size.size)
+        case .systemBold(let size):
+            return UIFont.boldSystemFont(ofSize: size.size)
         }
     }
 }
 
 enum FontSize {
-    case header1
-    case header2
+    case size1
+    case size2
+    case size3
     
     var size: CGFloat {
         switch self {
-        case .header1: return 26.0
-        case .header2: return 20.0
+        case .size1: return 26.0
+        case .size2: return 20.0
+        case .size3: return 15.0
         }
     }
 }
