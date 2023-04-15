@@ -9,7 +9,7 @@ import Foundation
 
 protocol CardsPresentationLogic: AnyObject {
     init(view: CardsView)
-    func getServerData(offset: Int)
+    func getServerData(offset: Int?)
 }
 
 final class CardsPresenter {
@@ -63,8 +63,8 @@ final class CardsPresenter {
 // MARK: - Presentation Logic
 
 extension CardsPresenter: CardsPresentationLogic {
-    func getServerData(offset: Int) {
-        let requestConfig = RequestFactory.CompanyRequest.modelConfig(offset: offset)
+    func getServerData(offset: Int?) {
+        let requestConfig = RequestFactory.CompanyRequest.modelConfig(offset: offset ?? viewModels.count)
         requestService?.send(config: requestConfig) { [weak self] result in
             switch result {
             case .success(let(models, _, _)):
@@ -76,7 +76,14 @@ extension CardsPresenter: CardsPresentationLogic {
                 self?.parseServerDataToViewModel()
                 self?.presentCards()
             case .failure(let error):
-                // TODO: Вывести ошибку на алерт если такая есть
+                DispatchQueue.main.async {
+                    self?.view?.showAlert(
+                        title: "Ошибка",
+                        message: error.describing,
+                        isReloadData: true
+                    )
+                }
+                
                 SystemLogger.error(error.describing)
             }
         }

@@ -9,6 +9,7 @@ import UIKit
 
 protocol CardsView: AnyObject {
     func display(models: [CardModel])
+    func showAlert(title: String, message: String, isReloadData: Bool)
 }
 
 final class CardsViewController: UIViewController {
@@ -57,7 +58,30 @@ final class CardsViewController: UIViewController {
 extension CardsViewController: CardsView {
     func display(models: [CardModel]) {
         dataSourceProvider?.cardModels = models
-        dataSourceProvider?.updateDataSource()
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.dataSourceProvider?.updateDataSource()
+        }
+    }
+    
+    func showAlert(title: String, message: String, isReloadData: Bool) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let loadAction = UIAlertAction(title: "Повторить", style: .default) { [weak self]_ in
+            self?.presenter?.getServerData(offset: nil)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel) { [weak self] _ in
+            // TODO: код остановки кастомного активити индикатора
+            // Нужно его добавить
+        }
+        
+        if isReloadData {
+            alert.addAction(loadAction)
+        }
+        
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -104,13 +128,5 @@ private extension CardsViewController {
             cardsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             cardsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-    }
-}
-
-// MARK: - Alert
-
-private extension CardsViewController {
-    func showErrorAlert() {
-
     }
 }

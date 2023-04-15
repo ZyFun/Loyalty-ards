@@ -36,7 +36,6 @@ final class CardCell: UITableViewCell, IdentifiableCell {
         return view
     }()
     
-    // TODO: Сделать загрузку изображений
     @UsesAutoLayout
     private var companyIconImageView: UIImageView = {
         let imageView = UIImageView()
@@ -97,8 +96,6 @@ final class CardCell: UITableViewCell, IdentifiableCell {
         return view
     }()
     
-    // TODO: Донастроить и добавить структуру с иконками
-    // которая будет принимать цвет с сервера
     @UsesAutoLayout
     private var eyeButton: UIButton = {
         let button = CardIconButton(type: .system)
@@ -146,10 +143,14 @@ final class CardCell: UITableViewCell, IdentifiableCell {
         setupRadiusForCompanyIconImage()
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func prepareForReuse() {
+        super.prepareForReuse()
         
-        // TODO: Сделать подготовку к переиспользованию для всех данных
+        companyNameLabel.text = ""
+        companyIconImageView.image = nil
+        markLabel.text = ""
+        percentLabel.text = ""
+        loyaltyNameLabel.text = ""
     }
     
     private func setupRadiusForCompanyIconImage() {
