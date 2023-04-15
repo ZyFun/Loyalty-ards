@@ -14,7 +14,7 @@ final class CardCell: UITableViewCell, IdentifiableCell {
     // MARK: - Private properties
     
     private var imageLoadingManager: IImageLoadingManager
-    private var companyId: String!
+    private var companyId: String?
     
     @UsesAutoLayout
     private var containerView: UIView = {
@@ -165,10 +165,8 @@ final class CardCell: UITableViewCell, IdentifiableCell {
     }
     
     @objc func pressedButton(_ sender: UIButton) {
-        print("Нажата кнопка \(sender.accessibilityLabel ?? "")")
-        
         delegate?.didPressedButton(
-            message: "Нажата кнопка \(sender.accessibilityLabel ?? "")"
+            message: "Нажата кнопка \(sender.accessibilityLabel ?? "no name"), id компании: \(companyId ?? "no id")"
         )
     }
 }
