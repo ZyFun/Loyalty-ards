@@ -53,6 +53,8 @@ final class CardsPresenter {
             )
             viewModels.append(model)
         }
+        
+        companyAPIModel = []
     }
     
     private func presentCards() {

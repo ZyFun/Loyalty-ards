@@ -22,19 +22,23 @@ final class CardsDataSourceProvider: NSObject, ICardsDataSourceProvider {
     // MARK: - Private properties
     
     private let presenter: CardsPresenter?
-    
-    // TODO: поправить код этот был для тестов
     private var dataSource: UITableViewDiffableDataSource<Section, CardModel>?
-    private var infiniteScrollModel: [CardModel] = []
+    /// Свойство для предотвращения попыток загрузки новых данных, если ничего нового загружено не было
+    private var loadedCount = 0
     
-    private var countModels = 5
-    private func getNewModels() {
-        countModels += 5
-        infiniteScrollModel.append(contentsOf: cardModels.prefix(countModels))
-    }
+    // MARK: - Initializer
     
     init(presenter: CardsPresenter) {
         self.presenter = presenter
+    }
+    
+    // MARK: - Private methods
+    
+    private func getNewModels() {
+        if cardModels.count != loadedCount {
+            presenter?.getServerData(offset: cardModels.count)
+            loadedCount += cardModels.count
+        }
     }
 }
 
@@ -73,11 +77,9 @@ extension CardsDataSourceProvider {
     }
     
     func updateDataSource() {
-        infiniteScrollModel = Array(cardModels.prefix(countModels))
-        
         var snapshot = NSDiffableDataSourceSnapshot<Section, CardModel>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(infiniteScrollModel, toSection: .main)
+        snapshot.appendItems(cardModels, toSection: .main)
         
         dataSource?.apply(snapshot, animatingDifferences: true, completion: nil)
     }
@@ -91,7 +93,7 @@ extension CardsDataSourceProvider {
         willDisplay cell: UITableViewCell,
         forRowAt indexPath: IndexPath
     ) {
-        if indexPath.row == infiniteScrollModel.count - 2 {
+        if indexPath.row == cardModels.count - 1 {
             getNewModels()
         }
     }
