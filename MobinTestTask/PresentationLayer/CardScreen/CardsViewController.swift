@@ -75,6 +75,8 @@ private extension CardsViewController {
         registerElements()
         dataSourceProvider?.makeDataSource(with: cardsTableView)
         cardsTableView.delegate = dataSourceProvider
+        
+        cardsTableView.separatorStyle = .none
     }
     
     func registerElements() {

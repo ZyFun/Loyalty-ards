@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C07D85329EAB40F0083C939 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C07D85229EAB40F0083C939 /* Icons.swift */; };
+		2C07D85529EABB720083C939 /* CardIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C07D85429EABB720083C939 /* CardIconButton.swift */; };
 		2C3CBE7D29E7C569004CF4A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3CBE7C29E7C569004CF4A6 /* AppDelegate.swift */; };
 		2C3CBE8629E7C56B004CF4A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C3CBE8529E7C56B004CF4A6 /* Assets.xcassets */; };
 		2C3CBE8929E7C56B004CF4A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C3CBE8729E7C56B004CF4A6 /* LaunchScreen.storyboard */; };
@@ -34,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C07D85229EAB40F0083C939 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
+		2C07D85429EABB720083C939 /* CardIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardIconButton.swift; sourceTree = "<group>"; };
 		2C3CBE7929E7C569004CF4A6 /* MobinTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobinTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C3CBE7C29E7C569004CF4A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C3CBE8529E7C56B004CF4A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 				2C3CBE9529E8199F004CF4A6 /* Supports */,
 				2C86FC1729E95E0E00D21D76 /* Protocols */,
 				2C86FC2A29E9647200D21D76 /* Extensions */,
+				2C07D85429EABB720083C939 /* CardIconButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -229,6 +234,7 @@
 				2C86FC3229E9656C00D21D76 /* Colors.swift */,
 				2C86FC3A29E9708C00D21D76 /* Indents.swift */,
 				2C86FC3C29E9837C00D21D76 /* Fonts.swift */,
+				2C07D85229EAB40F0083C939 /* Icons.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -333,6 +339,8 @@
 				2C3CBE9C29E81A69004CF4A6 /* NetworkError.swift in Sources */,
 				2C86FC4529E9D4DB00D21D76 /* UsesAutoLayout.swift in Sources */,
 				2C86FC3B29E9708C00D21D76 /* Indents.swift in Sources */,
+				2C07D85529EABB720083C939 /* CardIconButton.swift in Sources */,
+				2C07D85329EAB40F0083C939 /* Icons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

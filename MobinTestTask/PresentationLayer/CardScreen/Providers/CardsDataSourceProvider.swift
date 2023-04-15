@@ -52,6 +52,7 @@ extension CardsDataSourceProvider {
                 
                 cell.config(
                     companyName: model.name,
+                    imageUrl: model.imageUrl,
                     mark: model.mark,
                     percent: model.percent,
                     loyaltyName: model.loyaltyName,

@@ -8,7 +8,7 @@
 import Foundation
 
 struct Indents {
-    static let red: CGFloat = 16
-    static let yellow: CGFloat = 10
-    static let blue: CGFloat = 50
+    static let red: CGFloat = 19
+    static let yellow: CGFloat = 8
+    static let blue: CGFloat = 55
 }

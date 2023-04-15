@@ -9,13 +9,14 @@ import UIKit
 
 // TODO: Нужен делегат для кнопок ячейки
 
-class CardCell: UITableViewCell, IdentifiableCell {
+final class CardCell: UITableViewCell, IdentifiableCell {
     
     // MARK: - Private properties
     
     @UsesAutoLayout
     private var containerView: UIView = {
         let view = UIView()
+        view.layer.cornerRadius = 30
         return view
     }()
     
@@ -26,10 +27,19 @@ class CardCell: UITableViewCell, IdentifiableCell {
         return label
     }()
     
+    @UsesAutoLayout
+    private var borderViewUp: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray5
+        return view
+    }()
+    
     // TODO: Сделать загрузку изображений
     @UsesAutoLayout
     private var companyIconImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.backgroundColor = .systemGray6
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -78,17 +88,26 @@ class CardCell: UITableViewCell, IdentifiableCell {
         return label
     }()
     
+    @UsesAutoLayout
+    private var borderViewDown: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray6
+        return view
+    }()
+    
     // TODO: Донастроить и добавить структуру с иконками
     // которая будет принимать цвет с сервера
     @UsesAutoLayout
     private var eyeButton: UIButton = {
-        let button = UIButton(type: .system)
+        let button = CardIconButton(type: .system)
+        button.setImage(Icons.eye.image, for: .normal)
         return button
     }()
     
     @UsesAutoLayout
     private var trashButton: UIButton = {
-        let button = UIButton(type: .system)
+        let button = CardIconButton(type: .system)
+        button.setImage(Icons.trash.image, for: .normal)
         return button
     }()
     
@@ -97,6 +116,7 @@ class CardCell: UITableViewCell, IdentifiableCell {
         let button = UIButton(type: .system)
         button.setTitle("Подробнее", for: .normal)
         button.titleLabel?.font = Fonts.systemNormal(.size2).font
+        button.layer.cornerRadius = 15
         return button
     }()
     
@@ -105,8 +125,8 @@ class CardCell: UITableViewCell, IdentifiableCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        // TODO: Добавить элементы
-        
+        setup()
+        addViews()
         setupConstraints()
     }
     
@@ -116,26 +136,30 @@ class CardCell: UITableViewCell, IdentifiableCell {
     
     // MARK: - Override Methods
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        setupRadiusForCompanyIconImage()
     }
     
-    // MARK: - Private methods
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        // TODO: Сделать подготовку к переиспользованию для всех данных
+    }
     
-    private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            // TODO: Добавить элементы
-        ])
+    private func setupRadiusForCompanyIconImage() {
+        let radius = companyIconImageView.frame.size.width / 2
+        companyIconImageView.layer.cornerRadius = radius
     }
 }
 
 // MARK: - Public methods
 
-// TODO: let imageUrl: String
 extension CardCell {
     func config(
         companyName: String,
+        imageUrl: String,
         mark: String,
         percent: String,
         loyaltyName: String,
@@ -158,6 +182,118 @@ extension CardCell {
         loyaltyNameLabel.textColor = UIColor(hex: hexColors.highlightTextColor)
         staticLoyaltyNameLabel.textColor = UIColor(hex: hexColors.textColor)
         
+        eyeButton.tintColor = UIColor(hex: hexColors.mainColor)
+        
+        trashButton.tintColor = UIColor(hex: hexColors.accentColor)
+        
         infoButton.setTitleColor(UIColor(hex: hexColors.mainColor), for: .normal)
+        infoButton.backgroundColor = UIColor(hex: hexColors.backgroundColor)
+    }
+}
+
+// MARK: - Private methods
+
+private extension CardCell {
+    func setup() {
+        setupUI()
+    }
+    
+    func setupUI() {
+        selectionStyle = .none
+        backgroundColor = .clear
+    }
+    
+    func addViews() {
+        contentView.addSubview(containerView)
+        
+        containerView.addSubview(companyNameLabel)
+        containerView.addSubview(companyIconImageView)
+        containerView.addSubview(borderViewUp)
+        containerView.addSubview(markLabel)
+        containerView.addSubview(staticMarkLabel)
+        containerView.addSubview(staticPercentLabel)
+        containerView.addSubview(percentLabel)
+        containerView.addSubview(staticLoyaltyNameLabel)
+        containerView.addSubview(loyaltyNameLabel)
+        containerView.addSubview(borderViewDown)
+        containerView.addSubview(eyeButton)
+        containerView.addSubview(trashButton)
+        containerView.addSubview(infoButton)
+    }
+    
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Indents.red),
+            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Indents.red),
+            containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Indents.red),
+            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Indents.red),
+                        
+            companyIconImageView.heightAnchor.constraint(equalToConstant: Constants.iconCompanySize),
+            companyIconImageView.widthAnchor.constraint(equalToConstant: Constants.iconCompanySize),
+            companyIconImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: Indents.red),
+            companyIconImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -Indents.red),
+            
+            companyNameLabel.centerYAnchor.constraint(equalTo: companyIconImageView.centerYAnchor, constant: Constants.companyNameOffsetUp),
+            companyNameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Indents.red),
+            
+            borderViewUp.heightAnchor.constraint(equalToConstant: Constants.heightBorder),
+            borderViewUp.topAnchor.constraint(equalTo: companyIconImageView.bottomAnchor, constant: Indents.yellow),
+            borderViewUp.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Indents.red),
+            borderViewUp.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -Indents.red),
+            
+            markLabel.topAnchor.constraint(equalTo: borderViewUp.bottomAnchor, constant: Indents.red),
+            markLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Indents.red),
+            
+            staticMarkLabel.leadingAnchor.constraint(equalTo: markLabel.trailingAnchor, constant: Indents.yellow),
+            staticMarkLabel.firstBaselineAnchor.constraint(equalTo: markLabel.firstBaselineAnchor),
+            
+            staticPercentLabel.topAnchor.constraint(equalTo: markLabel.bottomAnchor, constant: Indents.red),
+            staticPercentLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Indents.red),
+            
+            percentLabel.topAnchor.constraint(equalTo: staticPercentLabel.bottomAnchor, constant: Indents.yellow),
+            percentLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Indents.red),
+            
+            staticLoyaltyNameLabel.firstBaselineAnchor.constraint(equalTo: staticPercentLabel.firstBaselineAnchor),
+            staticLoyaltyNameLabel.leadingAnchor.constraint(equalTo: staticPercentLabel.trailingAnchor, constant: Indents.blue),
+            
+            loyaltyNameLabel.topAnchor.constraint(equalTo: staticLoyaltyNameLabel.bottomAnchor, constant: Indents.yellow),
+            loyaltyNameLabel.leadingAnchor.constraint(equalTo: staticLoyaltyNameLabel.leadingAnchor),
+            
+            borderViewDown.heightAnchor.constraint(equalToConstant: Constants.heightBorder),
+            borderViewDown.topAnchor.constraint(equalTo: loyaltyNameLabel.bottomAnchor, constant: Indents.yellow),
+            borderViewDown.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Indents.red),
+            borderViewDown.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -Indents.red),
+            
+            eyeButton.heightAnchor.constraint(equalToConstant: Constants.iconButtonSize),
+            eyeButton.widthAnchor.constraint(equalToConstant: Constants.iconButtonSize),
+            eyeButton.topAnchor.constraint(equalTo: borderViewDown.bottomAnchor, constant: Indents.red),
+            eyeButton.leadingAnchor.constraint(equalTo: borderViewDown.leadingAnchor, constant: Indents.red-Constants.eyeButtonOffsetY),
+            
+            trashButton.heightAnchor.constraint(equalToConstant: Constants.iconButtonSize),
+            trashButton.widthAnchor.constraint(equalToConstant: Constants.iconButtonSize),
+            trashButton.topAnchor.constraint(equalTo: borderViewDown.bottomAnchor, constant: Indents.red),
+            trashButton.leadingAnchor.constraint(equalTo: eyeButton.trailingAnchor, constant: Indents.blue),
+            
+            infoButton.heightAnchor.constraint(equalToConstant: Constants.infoButtonHeight),
+            infoButton.widthAnchor.constraint(equalToConstant: Constants.infoBottonWidth),
+            infoButton.topAnchor.constraint(equalTo: borderViewDown.bottomAnchor, constant: Indents.yellow),
+            infoButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -Indents.red),
+            infoButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -Indents.red),
+            
+        ])
+    }
+    
+    
+}
+
+private extension CardCell {
+    struct Constants {
+        static let iconCompanySize: CGFloat = 48
+        static let iconButtonSize: CGFloat = 25
+        static let companyNameOffsetUp: CGFloat = -5
+        static let heightBorder: CGFloat = 2
+        static let infoButtonHeight: CGFloat = 50
+        static let infoBottonWidth: CGFloat = 178
+        static let eyeButtonOffsetY: CGFloat = 6
     }
 }
