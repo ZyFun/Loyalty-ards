@@ -13,6 +13,8 @@ final class CardCell: UITableViewCell, IdentifiableCell {
     
     // MARK: - Private properties
     
+    private var imageLoadingManager: IImageLoadingManager
+    
     @UsesAutoLayout
     private var containerView: UIView = {
         let view = UIView()
@@ -123,6 +125,8 @@ final class CardCell: UITableViewCell, IdentifiableCell {
     // MARK: - Initializer
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        imageLoadingManager = ImageLoadingManager()
+        
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setup()
@@ -165,6 +169,8 @@ extension CardCell {
         loyaltyName: String,
         hexColors: CardColorsModel
     ) {
+        setImage(from: imageUrl)
+        
         containerView.backgroundColor = UIColor(hex: hexColors.cardBackgroundColor)
         
         companyNameLabel.text = companyName
@@ -189,9 +195,25 @@ extension CardCell {
         infoButton.setTitleColor(UIColor(hex: hexColors.mainColor), for: .normal)
         infoButton.backgroundColor = UIColor(hex: hexColors.backgroundColor)
     }
+    
+    private func setImage(from url: String) {
+        imageLoadingManager.getImage(from: url) { [weak self] result in
+            switch result {
+            case .success(let image):
+                DispatchQueue.main.async {
+                    self?.companyIconImageView.image = image
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.companyIconImageView.image = nil
+                    SystemLogger.error(error.describing)
+                }
+            }
+        }
+    }
 }
 
-// MARK: - Private methods
+// MARK: - Configuration methods
 
 private extension CardCell {
     func setup() {
@@ -282,8 +304,6 @@ private extension CardCell {
             
         ])
     }
-    
-    
 }
 
 private extension CardCell {

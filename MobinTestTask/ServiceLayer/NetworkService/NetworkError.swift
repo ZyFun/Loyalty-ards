@@ -14,6 +14,7 @@ enum NetworkError: Error {
     case networkError
     case statusCodeError
     case parseError
+    case noImage
     
     var describing: String {
         switch self {
@@ -33,6 +34,8 @@ enum NetworkError: Error {
             return "Ошибка получения кода статуса. Обратитесь к разработчику"
         case .parseError:
             return "Ошибка парсинга данных. Обратитесь к разработчику"
+        case .noImage:
+            return "По ссылке не найдено изображение"
         }
     }
 }

@@ -67,7 +67,7 @@ final class RequestSender: IRequestSender {
                 }
             }
             
-            #warning("Удалить перед отправкой")
+            // Для отладки и сверки данных
             if let data = data, let jsonString = String(data: data, encoding: .utf8) {
                 SystemLogger.info("Response JSON: \(jsonString)")
             }

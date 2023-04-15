@@ -14,5 +14,10 @@ struct RequestFactory {
             let parser = CompanyParser()
             return RequestConfig<CompanyParser>(request: request, parser: parser)
         }
+        
+        static func imageCompanyConfig(from urlString: String) -> RequestConfig<CompanyParser> {
+            let request = CompanyImageUrlRequest(urlString: urlString)
+            return RequestConfig<CompanyParser>(request: request, parser: nil)
+        }
     }
 }
