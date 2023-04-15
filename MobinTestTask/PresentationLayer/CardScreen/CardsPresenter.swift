@@ -59,6 +59,7 @@ final class CardsPresenter {
     
     private func presentCards() {
         view?.display(models: viewModels)
+        view?.dataFinishedLoaded()
     }
 }
 
@@ -70,6 +71,8 @@ extension CardsPresenter: CardsPresentationLogic, CellButtonActionDelegate {
     }
     
     func getServerData(offset: Int?) {
+        view?.dataStartedLoaded()
+        
         let requestConfig = RequestFactory.CompanyRequest.modelConfig(offset: offset ?? viewModels.count)
         requestService?.send(config: requestConfig) { [weak self] result in
             switch result {
@@ -80,7 +83,9 @@ extension CardsPresenter: CardsPresentationLogic, CellButtonActionDelegate {
                 })
                 
                 self?.parseServerDataToViewModel()
-                self?.presentCards()
+                DispatchQueue.main.async {
+                    self?.presentCards()
+                }
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.view?.showAlert(

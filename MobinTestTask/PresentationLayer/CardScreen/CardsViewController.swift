@@ -10,6 +10,8 @@ import UIKit
 protocol CardsView: AnyObject {
     func display(models: [CardModel])
     func showAlert(title: String, message: String, isReloadData: Bool)
+    func dataStartedLoaded()
+    func dataFinishedLoaded()
 }
 
 final class CardsViewController: UIViewController {
@@ -19,6 +21,12 @@ final class CardsViewController: UIViewController {
     var dataSourceProvider: ICardsDataSourceProvider?
     
     // MARK: - Private properties
+    
+    @UsesAutoLayout
+    private var activityIndicator: HalfRingActivityIndicator = {
+        let activityIndicator = HalfRingActivityIndicator()
+        return activityIndicator
+    }()
     
     @UsesAutoLayout
     private var containerView: UIView = {
@@ -56,12 +64,17 @@ final class CardsViewController: UIViewController {
 // MARK: - Логика обновления данных View
 
 extension CardsViewController: CardsView {
+    func dataFinishedLoaded() {
+        activityIndicator.stopAnimating()
+    }
+    
+    func dataStartedLoaded() {
+        activityIndicator.startAnimating()
+    }
+    
     func display(models: [CardModel]) {
         dataSourceProvider?.cardModels = models
-        
-        DispatchQueue.main.async { [weak self] in
-            self?.dataSourceProvider?.updateDataSource()
-        }
+        dataSourceProvider?.updateDataSource()
     }
     
     func showAlert(title: String, message: String, isReloadData: Bool) {
@@ -71,8 +84,7 @@ extension CardsViewController: CardsView {
         }
         
         let cancelAction = UIAlertAction(title: "Отмена", style: .cancel) { [weak self] _ in
-            // TODO: код остановки кастомного активити индикатора
-            // Нужно его добавить
+            self?.activityIndicator.stopAnimating()
         }
         
         if isReloadData {
@@ -113,9 +125,16 @@ private extension CardsViewController {
     func setupConstraints() {
         view.addSubview(containerView)
         view.addSubview(cardsTableView)
+        view.addSubview(activityIndicator)
+        
         containerView.addSubview(cardManagementLabel)
         
         NSLayoutConstraint.activate([
+            activityIndicator.heightAnchor.constraint(equalToConstant: 60),
+            activityIndicator.widthAnchor.constraint(equalToConstant: 60),
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
             cardManagementLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             cardManagementLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: Indents.red),
             cardManagementLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -Indents.red),

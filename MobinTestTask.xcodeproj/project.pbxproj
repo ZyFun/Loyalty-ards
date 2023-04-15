@@ -11,6 +11,7 @@
 		2C07D85529EABB720083C939 /* CardIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C07D85429EABB720083C939 /* CardIconButton.swift */; };
 		2C07D85829EAC79E0083C939 /* ImageLoadingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C07D85729EAC79E0083C939 /* ImageLoadingManager.swift */; };
 		2C07D85A29EAE4170083C939 /* CardButtonActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C07D85929EAE4170083C939 /* CardButtonActionDelegate.swift */; };
+		2C07D85E29EB3B8B0083C939 /* HalfRingActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C07D85D29EB3B8B0083C939 /* HalfRingActivityIndicator.swift */; };
 		2C3CBE7D29E7C569004CF4A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3CBE7C29E7C569004CF4A6 /* AppDelegate.swift */; };
 		2C3CBE8629E7C56B004CF4A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C3CBE8529E7C56B004CF4A6 /* Assets.xcassets */; };
 		2C3CBE8929E7C56B004CF4A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C3CBE8729E7C56B004CF4A6 /* LaunchScreen.storyboard */; };
@@ -42,6 +43,7 @@
 		2C07D85429EABB720083C939 /* CardIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardIconButton.swift; sourceTree = "<group>"; };
 		2C07D85729EAC79E0083C939 /* ImageLoadingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingManager.swift; sourceTree = "<group>"; };
 		2C07D85929EAE4170083C939 /* CardButtonActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardButtonActionDelegate.swift; sourceTree = "<group>"; };
+		2C07D85D29EB3B8B0083C939 /* HalfRingActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfRingActivityIndicator.swift; sourceTree = "<group>"; };
 		2C3CBE7929E7C569004CF4A6 /* MobinTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobinTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C3CBE7C29E7C569004CF4A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C3CBE8529E7C56B004CF4A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				2C86FC1729E95E0E00D21D76 /* Protocols */,
 				2C86FC2A29E9647200D21D76 /* Extensions */,
 				2C07D85429EABB720083C939 /* CardIconButton.swift */,
+				2C07D85D29EB3B8B0083C939 /* HalfRingActivityIndicator.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				2C86FC1229E9512900D21D76 /* URLProvider.swift in Sources */,
 				2C86FC2C29E964A000D21D76 /* UIColor+Hex.swift in Sources */,
 				2C3CBEA629E81C1B004CF4A6 /* RequestService.swift in Sources */,
+				2C07D85E29EB3B8B0083C939 /* HalfRingActivityIndicator.swift in Sources */,
 				2C07D85829EAC79E0083C939 /* ImageLoadingManager.swift in Sources */,
 				2C86FC2029E95FA800D21D76 /* CardsPresenter.swift in Sources */,
 				2C3CBEA429E81BF5004CF4A6 /* CompanyParser.swift in Sources */,
