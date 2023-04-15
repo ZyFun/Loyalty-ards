@@ -19,7 +19,7 @@ final class CardsConfigurator {
     ) {
         guard let view = view as? CardsViewController else { return }
         let presenter = CardsPresenter(view: view)
-        let dataSourceProvider: ICardsDataSourceProvider = CardsDataSourceProvider()
+        let dataSourceProvider: ICardsDataSourceProvider = CardsDataSourceProvider(presenter: presenter)
         
         view.presenter = presenter
         view.dataSourceProvider = dataSourceProvider

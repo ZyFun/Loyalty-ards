@@ -21,6 +21,8 @@ final class CardsDataSourceProvider: NSObject, ICardsDataSourceProvider {
     
     // MARK: - Private properties
     
+    private let presenter: CardsPresenter?
+    
     // TODO: поправить код этот был для тестов
     private var dataSource: UITableViewDiffableDataSource<Section, CardModel>?
     private var infiniteScrollModel: [CardModel] = []
@@ -29,6 +31,10 @@ final class CardsDataSourceProvider: NSObject, ICardsDataSourceProvider {
     private func getNewModels() {
         countModels += 5
         infiniteScrollModel.append(contentsOf: cardModels.prefix(countModels))
+    }
+    
+    init(presenter: CardsPresenter) {
+        self.presenter = presenter
     }
 }
 
@@ -42,7 +48,7 @@ extension CardsDataSourceProvider {
     func makeDataSource(with cardsTableView: UITableView) {
         dataSource = UITableViewDiffableDataSource(
             tableView: cardsTableView,
-            cellProvider: { tableView, indexPath, model -> UITableViewCell? in
+            cellProvider: { [weak self] tableView, indexPath, model -> UITableViewCell? in
                 guard let cell = tableView.dequeueReusableCell(
                     withIdentifier: CardCell.identifier,
                     for: indexPath
@@ -51,12 +57,14 @@ extension CardsDataSourceProvider {
                 }
                 
                 cell.config(
+                    companyId: model.id,
                     companyName: model.name,
                     imageUrl: model.imageUrl,
                     mark: model.mark,
                     percent: model.percent,
                     loyaltyName: model.loyaltyName,
-                    hexColors: model.hexColors
+                    hexColors: model.hexColors,
+                    delegate: self?.presenter
                 )
                 
                 return cell

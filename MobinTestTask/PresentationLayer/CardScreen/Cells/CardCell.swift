@@ -7,13 +7,14 @@
 
 import UIKit
 
-// TODO: Нужен делегат для кнопок ячейки
-
 final class CardCell: UITableViewCell, IdentifiableCell {
+    
+    weak var delegate: CellButtonActionDelegate?
     
     // MARK: - Private properties
     
     private var imageLoadingManager: IImageLoadingManager
+    private var companyId: String!
     
     @UsesAutoLayout
     private var containerView: UIView = {
@@ -100,6 +101,7 @@ final class CardCell: UITableViewCell, IdentifiableCell {
     private var eyeButton: UIButton = {
         let button = CardIconButton(type: .system)
         button.setImage(Icons.eye.image, for: .normal)
+        button.accessibilityLabel = "Eye Button"
         return button
     }()
     
@@ -107,6 +109,7 @@ final class CardCell: UITableViewCell, IdentifiableCell {
     private var trashButton: UIButton = {
         let button = CardIconButton(type: .system)
         button.setImage(Icons.trash.image, for: .normal)
+        button.accessibilityLabel = "Delete Button"
         return button
     }()
     
@@ -116,6 +119,7 @@ final class CardCell: UITableViewCell, IdentifiableCell {
         button.setTitle("Подробнее", for: .normal)
         button.titleLabel?.font = Fonts.systemNormal(.size2).font
         button.layer.cornerRadius = 15
+        button.accessibilityLabel = "Info Button"
         return button
     }()
     
@@ -153,9 +157,19 @@ final class CardCell: UITableViewCell, IdentifiableCell {
         loyaltyNameLabel.text = ""
     }
     
+    // MARK: - Private methods
+    
     private func setupRadiusForCompanyIconImage() {
         let radius = companyIconImageView.frame.size.width / 2
         companyIconImageView.layer.cornerRadius = radius
+    }
+    
+    @objc func pressedButton(_ sender: UIButton) {
+        print("Нажата кнопка \(sender.accessibilityLabel ?? "")")
+        
+        delegate?.didPressedButton(
+            message: "Нажата кнопка \(sender.accessibilityLabel ?? "")"
+        )
     }
 }
 
@@ -163,13 +177,18 @@ final class CardCell: UITableViewCell, IdentifiableCell {
 
 extension CardCell {
     func config(
+        companyId: String,
         companyName: String,
         imageUrl: String,
         mark: String,
         percent: String,
         loyaltyName: String,
-        hexColors: CardColorsModel
+        hexColors: CardColorsModel,
+        delegate: CellButtonActionDelegate?
     ) {
+        self.delegate = delegate
+        self.companyId = companyId
+        
         setImage(from: imageUrl)
         
         containerView.backgroundColor = UIColor(hex: hexColors.cardBackgroundColor)
@@ -219,11 +238,18 @@ extension CardCell {
 private extension CardCell {
     func setup() {
         setupUI()
+        addTargetFromButtons()
     }
     
     func setupUI() {
         selectionStyle = .none
         backgroundColor = .clear
+    }
+    
+    func addTargetFromButtons() {
+        eyeButton.addTarget(self, action: #selector(pressedButton(_:)), for: .touchUpInside)
+        trashButton.addTarget(self, action: #selector(pressedButton(_:)), for: .touchUpInside)
+        infoButton.addTarget(self, action: #selector(pressedButton(_:)), for: .touchUpInside)
     }
     
     func addViews() {

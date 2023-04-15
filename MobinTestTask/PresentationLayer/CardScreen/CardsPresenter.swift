@@ -62,7 +62,11 @@ final class CardsPresenter {
 
 // MARK: - Presentation Logic
 
-extension CardsPresenter: CardsPresentationLogic {
+extension CardsPresenter: CardsPresentationLogic, CellButtonActionDelegate {
+    func didPressedButton(message: String) {
+        view?.showAlert(title: "", message: message, isReloadData: false)
+    }
+    
     func getServerData(offset: Int?) {
         let requestConfig = RequestFactory.CompanyRequest.modelConfig(offset: offset ?? viewModels.count)
         requestService?.send(config: requestConfig) { [weak self] result in
