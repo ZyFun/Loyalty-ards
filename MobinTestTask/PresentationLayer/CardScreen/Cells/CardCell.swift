@@ -27,6 +27,7 @@ final class CardCell: UITableViewCell, IdentifiableCell {
     private var companyNameLabel: UILabel = {
         let label = UILabel()
         label.font = Fonts.systemNormal(.size1).font
+        label.numberOfLines = 2
         return label
     }()
     
@@ -282,6 +283,7 @@ private extension CardCell {
             
             companyNameLabel.centerYAnchor.constraint(equalTo: companyIconImageView.centerYAnchor, constant: Constants.companyNameOffsetUp),
             companyNameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Indents.red),
+            companyNameLabel.trailingAnchor.constraint(equalTo: companyIconImageView.leadingAnchor),
             
             borderViewUp.heightAnchor.constraint(equalToConstant: Constants.heightBorder),
             borderViewUp.topAnchor.constraint(equalTo: companyIconImageView.bottomAnchor, constant: Indents.yellow),
@@ -338,7 +340,7 @@ private extension CardCell {
         static let companyNameOffsetUp: CGFloat = -5
         static let heightBorder: CGFloat = 2
         static let infoButtonHeight: CGFloat = 50
-        static let infoBottonWidth: CGFloat = 178
+        static let infoBottonWidth: CGFloat = UIScreen.main.bounds.width * 0.4139 // примерно 178
         static let eyeButtonOffsetY: CGFloat = 6
     }
 }
