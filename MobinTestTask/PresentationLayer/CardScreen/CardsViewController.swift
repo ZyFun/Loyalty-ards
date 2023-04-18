@@ -22,10 +22,11 @@ final class CardsViewController: UIViewController {
     
     // MARK: - Private properties
     
-    private var activityIndicator: HalfRingActivityIndicator = {
-        let activityIndicator = HalfRingActivityIndicator()
-        activityIndicator.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
-        return activityIndicator
+    private var loaderView: ILoaderFooterView = {
+        let view = LoaderFooterView()
+        let fittingSize = view.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        view.frame = CGRect(x: 0, y: 0, width: fittingSize.width, height: fittingSize.height)
+        return view
     }()
     
     @UsesAutoLayout
@@ -65,13 +66,13 @@ final class CardsViewController: UIViewController {
 
 extension CardsViewController: CardsView {
     func dataFinishedLoaded() {
-        activityIndicator.stopAnimating()
+        loaderView.stopAnimating()
         cardsTableView.tableFooterView = nil
     }
     
     func dataStartedLoaded() {
-        cardsTableView.tableFooterView = activityIndicator
-        activityIndicator.startAnimating()
+        cardsTableView.tableFooterView = loaderView as? UIView
+        loaderView.startAnimating()
     }
     
     func display(models: [CardModel]) {

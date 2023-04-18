@@ -36,6 +36,7 @@
 		2C86FC3B29E9708C00D21D76 /* Indents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C86FC3A29E9708C00D21D76 /* Indents.swift */; };
 		2C86FC3D29E9837C00D21D76 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C86FC3C29E9837C00D21D76 /* Fonts.swift */; };
 		2C86FC4529E9D4DB00D21D76 /* UsesAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C86FC4429E9D4DB00D21D76 /* UsesAutoLayout.swift */; };
+		2CB6588729EE9CBA004B77ED /* LoaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6588629EE9CBA004B77ED /* LoaderFooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		2C86FC3A29E9708C00D21D76 /* Indents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indents.swift; sourceTree = "<group>"; };
 		2C86FC3C29E9837C00D21D76 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		2C86FC4429E9D4DB00D21D76 /* UsesAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsesAutoLayout.swift; sourceTree = "<group>"; };
+		2CB6588629EE9CBA004B77ED /* LoaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderFooterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 		2C86FC1429E95DC900D21D76 /* CardScreen */ = {
 			isa = PBXGroup;
 			children = (
+				2CB6588529EE9C93004B77ED /* TableFooterViews */,
 				2C86FC2329E960B000D21D76 /* Providers */,
 				2C86FC1529E95DD400D21D76 /* Cells */,
 				2C86FC1B29E95F5D00D21D76 /* CardModel.swift */,
@@ -262,6 +265,14 @@
 				2C86FC4429E9D4DB00D21D76 /* UsesAutoLayout.swift */,
 			);
 			path = PropertyWrappers;
+			sourceTree = "<group>";
+		};
+		2CB6588529EE9C93004B77ED /* TableFooterViews */ = {
+			isa = PBXGroup;
+			children = (
+				2CB6588629EE9CBA004B77ED /* LoaderFooterView.swift */,
+			);
+			path = TableFooterViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,6 +355,7 @@
 				2C86FC2029E95FA800D21D76 /* CardsPresenter.swift in Sources */,
 				2C3CBEA429E81BF5004CF4A6 /* CompanyParser.swift in Sources */,
 				2C86FC3D29E9837C00D21D76 /* Fonts.swift in Sources */,
+				2CB6588729EE9CBA004B77ED /* LoaderFooterView.swift in Sources */,
 				2C86FC2629E960CB00D21D76 /* CardsDataSourceProvider.swift in Sources */,
 				2C07D85A29EAE4170083C939 /* CardButtonActionDelegate.swift in Sources */,
 				2C86FC1C29E95F5D00D21D76 /* CardModel.swift in Sources */,
