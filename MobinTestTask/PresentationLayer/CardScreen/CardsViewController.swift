@@ -22,9 +22,9 @@ final class CardsViewController: UIViewController {
     
     // MARK: - Private properties
     
-    @UsesAutoLayout
     private var activityIndicator: HalfRingActivityIndicator = {
         let activityIndicator = HalfRingActivityIndicator()
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         return activityIndicator
     }()
     
@@ -66,9 +66,11 @@ final class CardsViewController: UIViewController {
 extension CardsViewController: CardsView {
     func dataFinishedLoaded() {
         activityIndicator.stopAnimating()
+        cardsTableView.tableFooterView = nil
     }
     
     func dataStartedLoaded() {
+        cardsTableView.tableFooterView = activityIndicator
         activityIndicator.startAnimating()
     }
     
@@ -84,7 +86,7 @@ extension CardsViewController: CardsView {
         }
         
         let cancelAction = UIAlertAction(title: "Отмена", style: .cancel) { [weak self] _ in
-            self?.activityIndicator.stopAnimating()
+            self?.dataFinishedLoaded()
         }
         
         if isReloadData {
@@ -125,16 +127,10 @@ private extension CardsViewController {
     func setupConstraints() {
         view.addSubview(containerView)
         view.addSubview(cardsTableView)
-        view.addSubview(activityIndicator)
         
         containerView.addSubview(cardManagementLabel)
         
         NSLayoutConstraint.activate([
-            activityIndicator.heightAnchor.constraint(equalToConstant: 60),
-            activityIndicator.widthAnchor.constraint(equalToConstant: 60),
-            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            
             cardManagementLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             cardManagementLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: Indents.red),
             cardManagementLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -Indents.red),
