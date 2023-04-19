@@ -37,6 +37,12 @@
 		2C86FC3D29E9837C00D21D76 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C86FC3C29E9837C00D21D76 /* Fonts.swift */; };
 		2C86FC4529E9D4DB00D21D76 /* UsesAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C86FC4429E9D4DB00D21D76 /* UsesAutoLayout.swift */; };
 		2CB6588729EE9CBA004B77ED /* LoaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB6588629EE9CBA004B77ED /* LoaderFooterView.swift */; };
+		2CC4B29E29F07A8C00D86834 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2CC4B29D29F07A8C00D86834 /* README.md */; };
+		2CC4B2A429F07EA700D86834 /* Screenshot001.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CC4B2A029F07EA700D86834 /* Screenshot001.png */; };
+		2CC4B2A529F07EA700D86834 /* Screenshot003.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CC4B2A129F07EA700D86834 /* Screenshot003.png */; };
+		2CC4B2A629F07EA700D86834 /* Screenshot002.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CC4B2A229F07EA700D86834 /* Screenshot002.png */; };
+		2CC4B2A729F07EA700D86834 /* Screenshot000.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CC4B2A329F07EA700D86834 /* Screenshot000.png */; };
+		2CC4B2AA29F0844800D86834 /* Demo000.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2CC4B2A929F0844800D86834 /* Demo000.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +78,12 @@
 		2C86FC3C29E9837C00D21D76 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		2C86FC4429E9D4DB00D21D76 /* UsesAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsesAutoLayout.swift; sourceTree = "<group>"; };
 		2CB6588629EE9CBA004B77ED /* LoaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderFooterView.swift; sourceTree = "<group>"; };
+		2CC4B29D29F07A8C00D86834 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2CC4B2A029F07EA700D86834 /* Screenshot001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot001.png; sourceTree = "<group>"; };
+		2CC4B2A129F07EA700D86834 /* Screenshot003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot003.png; sourceTree = "<group>"; };
+		2CC4B2A229F07EA700D86834 /* Screenshot002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot002.png; sourceTree = "<group>"; };
+		2CC4B2A329F07EA700D86834 /* Screenshot000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot000.png; sourceTree = "<group>"; };
+		2CC4B2A929F0844800D86834 /* Demo000.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Demo000.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +109,9 @@
 			isa = PBXGroup;
 			children = (
 				2C3CBE7B29E7C569004CF4A6 /* MobinTestTask */,
+				2CC4B29F29F07E5500D86834 /* Screenshots */,
+				2CC4B2A829F0843000D86834 /* Demo */,
+				2CC4B29D29F07A8C00D86834 /* README.md */,
 				2C3CBE7A29E7C569004CF4A6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -275,6 +290,25 @@
 			path = TableFooterViews;
 			sourceTree = "<group>";
 		};
+		2CC4B29F29F07E5500D86834 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				2CC4B2A329F07EA700D86834 /* Screenshot000.png */,
+				2CC4B2A029F07EA700D86834 /* Screenshot001.png */,
+				2CC4B2A229F07EA700D86834 /* Screenshot002.png */,
+				2CC4B2A129F07EA700D86834 /* Screenshot003.png */,
+			);
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
+		2CC4B2A829F0843000D86834 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				2CC4B2A929F0844800D86834 /* Demo000.gif */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -333,8 +367,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CC4B2A629F07EA700D86834 /* Screenshot002.png in Resources */,
+				2CC4B29E29F07A8C00D86834 /* README.md in Resources */,
 				2C3CBE8929E7C56B004CF4A6 /* LaunchScreen.storyboard in Resources */,
+				2CC4B2A729F07EA700D86834 /* Screenshot000.png in Resources */,
+				2CC4B2AA29F0844800D86834 /* Demo000.gif in Resources */,
+				2CC4B2A529F07EA700D86834 /* Screenshot003.png in Resources */,
 				2C3CBE8629E7C56B004CF4A6 /* Assets.xcassets in Resources */,
+				2CC4B2A429F07EA700D86834 /* Screenshot001.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,7 +480,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -494,7 +534,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -519,6 +559,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -550,6 +591,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
