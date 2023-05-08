@@ -15,13 +15,13 @@
 		2C3CBE7D29E7C569004CF4A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3CBE7C29E7C569004CF4A6 /* AppDelegate.swift */; };
 		2C3CBE8629E7C56B004CF4A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C3CBE8529E7C56B004CF4A6 /* Assets.xcassets */; };
 		2C3CBE8929E7C56B004CF4A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C3CBE8729E7C56B004CF4A6 /* LaunchScreen.storyboard */; };
-		2C3CBE9729E819CA004CF4A6 /* SystemLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3CBE9629E819CA004CF4A6 /* SystemLogger.swift */; };
 		2C3CBE9929E81A0F004CF4A6 /* ServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3CBE9829E81A0F004CF4A6 /* ServiceAssembly.swift */; };
 		2C3CBE9C29E81A69004CF4A6 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3CBE9B29E81A69004CF4A6 /* NetworkError.swift */; };
 		2C3CBEA229E81B37004CF4A6 /* CompanyAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3CBEA129E81B37004CF4A6 /* CompanyAPIModel.swift */; };
 		2C3CBEA429E81BF5004CF4A6 /* CompanyParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3CBEA329E81BF5004CF4A6 /* CompanyParser.swift */; };
 		2C3CBEA629E81C1B004CF4A6 /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3CBEA529E81C1B004CF4A6 /* RequestService.swift */; };
 		2C3CBEA929E81C4F004CF4A6 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3CBEA829E81C4F004CF4A6 /* RequestFactory.swift */; };
+		2C65FE242A09889500270A97 /* DTLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 2C65FE232A09889500270A97 /* DTLogger */; };
 		2C86FC1229E9512900D21D76 /* URLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C86FC1129E9512900D21D76 /* URLProvider.swift */; };
 		2C86FC1929E95E4000D21D76 /* IdentifiableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C86FC1829E95E4000D21D76 /* IdentifiableCell.swift */; };
 		2C86FC1C29E95F5D00D21D76 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C86FC1B29E95F5D00D21D76 /* CardModel.swift */; };
@@ -56,7 +56,6 @@
 		2C3CBE8529E7C56B004CF4A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C3CBE8829E7C56B004CF4A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C3CBE8A29E7C56B004CF4A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2C3CBE9629E819CA004CF4A6 /* SystemLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemLogger.swift; sourceTree = "<group>"; };
 		2C3CBE9829E81A0F004CF4A6 /* ServiceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAssembly.swift; sourceTree = "<group>"; };
 		2C3CBE9B29E81A69004CF4A6 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		2C3CBEA129E81B37004CF4A6 /* CompanyAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyAPIModel.swift; sourceTree = "<group>"; };
@@ -91,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C65FE242A09889500270A97 /* DTLogger in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,14 +164,6 @@
 			path = ServiceLayer;
 			sourceTree = "<group>";
 		};
-		2C3CBE9529E8199F004CF4A6 /* Supports */ = {
-			isa = PBXGroup;
-			children = (
-				2C3CBE9629E819CA004CF4A6 /* SystemLogger.swift */,
-			);
-			path = Supports;
-			sourceTree = "<group>";
-		};
 		2C3CBE9A29E81A43004CF4A6 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,7 +221,6 @@
 			children = (
 				2C86FC3029E9655D00D21D76 /* Constants */,
 				2C86FC4629E9D54B00D21D76 /* PropertyWrappers */,
-				2C3CBE9529E8199F004CF4A6 /* Supports */,
 				2C86FC1729E95E0E00D21D76 /* Protocols */,
 				2C86FC2A29E9647200D21D76 /* Extensions */,
 				2C07D85429EABB720083C939 /* CardIconButton.swift */,
@@ -325,6 +316,9 @@
 			dependencies = (
 			);
 			name = MobinTestTask;
+			packageProductDependencies = (
+				2C65FE232A09889500270A97 /* DTLogger */,
+			);
 			productName = MobinTestTask;
 			productReference = 2C3CBE7929E7C569004CF4A6 /* MobinTestTask.app */;
 			productType = "com.apple.product-type.application";
@@ -353,6 +347,9 @@
 				Base,
 			);
 			mainGroup = 2C3CBE7029E7C569004CF4A6;
+			packageReferences = (
+				2C65FE222A09889500270A97 /* XCRemoteSwiftPackageReference "DTLogger" */,
+			);
 			productRefGroup = 2C3CBE7A29E7C569004CF4A6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -403,7 +400,6 @@
 				2C86FC1929E95E4000D21D76 /* IdentifiableCell.swift in Sources */,
 				2C86FC3329E9656C00D21D76 /* Colors.swift in Sources */,
 				2C3CBE9929E81A0F004CF4A6 /* ServiceAssembly.swift in Sources */,
-				2C3CBE9729E819CA004CF4A6 /* SystemLogger.swift in Sources */,
 				2C86FC3629E9673600D21D76 /* CardCell.swift in Sources */,
 				2C3CBEA929E81C4F004CF4A6 /* RequestFactory.swift in Sources */,
 				2C86FC2929E9612600D21D76 /* PresentationAssembly.swift in Sources */,
@@ -630,6 +626,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2C65FE222A09889500270A97 /* XCRemoteSwiftPackageReference "DTLogger" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ZyFun/DTLogger.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2C65FE232A09889500270A97 /* DTLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C65FE222A09889500270A97 /* XCRemoteSwiftPackageReference "DTLogger" */;
+			productName = DTLogger;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2C3CBE7129E7C569004CF4A6 /* Project object */;
 }

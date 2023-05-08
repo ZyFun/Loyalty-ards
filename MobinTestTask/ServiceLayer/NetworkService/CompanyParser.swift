@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DTLogger
 
 final class CompanyParser: IParser {
     typealias Model = [CompanyData]

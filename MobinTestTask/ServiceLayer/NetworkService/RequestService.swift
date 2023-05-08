@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DTLogger
 
 protocol IRequest {
     var urlRequest: URLRequest? { get }

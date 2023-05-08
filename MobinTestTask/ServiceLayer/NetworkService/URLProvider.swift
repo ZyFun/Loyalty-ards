@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DTLogger
 
 public struct URLProvider {
     public static func getAllCardsUrl() -> URL {

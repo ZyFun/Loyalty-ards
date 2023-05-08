@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DTLogger
 
 protocol IImageLoadingManager {
     func getImage(from url: String, completion: @escaping (Result<UIImage?, NetworkError>) -> Void)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DTLogger
 
 final class CardCell: UITableViewCell, IdentifiableCell {
     
